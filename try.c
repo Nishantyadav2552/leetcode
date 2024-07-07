@@ -15,4 +15,6 @@ int main()
     scanf("%d",&n);
     int k = reverse(n);
     printf("%d",k);
+
+    printf("done");
 }
