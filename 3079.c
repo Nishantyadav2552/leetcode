@@ -12,17 +12,23 @@ int encrypted(int n){
         }
         digits++;
     }
-    printf("%d ",max);
     for (int i = 0; i < digits; i++)
     {
         n = n*10 + max;
     }
     return n;
 }
-int main()
-{
-    int n;
-   
-    int k = encrypted(10);
-    printf("%d",k);
+int sumOfEncryptedInt(int* nums, int numsSize) {
+    int sum = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        int val = encrypted(nums[i]);
+        sum+= val;
+    }
+    return sum;
+}
+int main(){
+    int arr[3]={10,21,31};
+    int result = sumOfEncryptedInt(arr,3);
+    printf("%d",result);
 }
