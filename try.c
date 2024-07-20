@@ -1,28 +1,35 @@
 #include <stdio.h>
-int encrypted(int n){
-    int digits = 0;
-    int max =0;
-    while (n!=0)
-    {
-        int val = n%10;
-        n = n/10;
-        if (val > max)
-        {
-            max = val;
-        }
-        digits++;
+#include <math.h>
+int digits(int n){
+    int c=0;
+    while(n!=0){
+        n =n/10;
+        c++;
     }
-    printf("%d ",max);
-    for (int i = 0; i < digits; i++)
-    {
-        n = n*10 + max;
-    }
-    return n;
+    return c;
 }
-int main()
-{
+
+int value(int n){
+    int a = pow(10,digits(n)-2);
+    return (digits(n)-1)*a;
+}
+
+int main(){
     int n;
-   
-    int k = encrypted(10);
-    printf("%d",k);
+    scanf("%d",&n);
+    if(n==0){
+        printf("0");
+    }
+    else if(n<10){
+        printf("1");
+    }
+    else{
+        int s=0, p = pow(10,(digits(n)-1));
+        while(n!=0){
+            int a = n/p;
+            s =s+ a*value(digits(n)) + p;
+            n = n/p;
+        }
+        printf("%d",s);
+    }
 }
